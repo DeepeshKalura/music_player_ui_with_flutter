@@ -13,21 +13,21 @@ class Song {
 
   static List<Song> songs = [
     Song(
-      title: 'Om Namah Shivay',
-      description: 'Agam Shiv Dun',
+      title: 'Shiv Dun',
+      description: 'Agam',
       url: 'assets/music/omNamahShivay.mp3',
       coverUrl: 'assets/images/omNamahShivay.jpg',
     ),
     Song(
       title: 'Namo Namo',
-      description: 'Amit Trivedi, Sushant Rajput',
+      description: 'Amit Trivedi',
       url: 'assets/music/namoNamo.mp3',
       coverUrl: 'assets/images/namoNamo.jpg',
     ),
     Song(
       title: 'Devo Ke Dev',
       description: 'Kalish Kher',
-      url: 'assets/music/devoKeDev.mp3',
+      url: 'assets/music/devonKeDev.mp3',
       coverUrl: 'assets/images/devonKeDev.jpg',
     )
   ];

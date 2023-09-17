@@ -60,6 +60,7 @@ class SongCard extends StatelessWidget {
                               color: AppColors.firstColor,
                               fontWeight: FontWeight.bold,
                             ),
+                        overflow: TextOverflow.fade,
                       ),
                       Text(
                         song.description,
