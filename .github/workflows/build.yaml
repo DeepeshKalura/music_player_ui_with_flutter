@@ -1,0 +1,145 @@
+name: Continuous Deployment to GitHub Pages
+
+on: 
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  
+
+jobs: 
+  name: Run Test
+  runs-on: ubuntu-latest
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.7'
+        channel: 'stable'
+        cache: true
+    - name: Get Packages
+      run: flutter pub get
+      cache: true
+    - name: Run Tests
+      run: flutter run test
+  
+  name: Build and Deploy Android
+  runs-on: ubuntu-latest
+  needs: [Run Test]
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.7'
+        channel: 'stable'
+        cache: true
+    - name: Get Packages
+      run: flutter pub get
+      cache: true
+    
+    - name: Build Android
+      run: flutter build apk
+    - name: Upload APK
+      uses: actions/upload-artifact@v2
+      with:
+        name: app-dev.apk
+        path: build/app/outputs/flutter-apk/app-debug.apk
+
+  name: Build and Deploy iOS
+  runs-on: macos-latest
+
+  needs: [Run Test]
+  steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Install Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.7.7'
+        channel: 'stable'
+        cache: true
+    - name: Get Packages
+      run: flutter pub get
+      cache: true
+    - name: Build iOS
+      run: flutter build ios --debug --no-codesign
+    - name: Upload iOS
+      uses: actions/upload-artifact@v2
+      with:
+        name: ios-app
+        path: build/ios/ipa/Runner.app | build/ios/iphones/Runner.app
+  # I will not be deploying to web for now
+  # name: Deploy to Github Pages
+  # runs-on: ubuntu-latest
+  # needs: [Run Test]
+  # steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Install Flutter
+  #     uses: subosito/flutter-action@v2
+  #     with:
+  #       flutter-version: '3.7.7'
+  #       channel: 'stable'
+  #       cache: true
+  #   - name: Get Packages
+  #     run: flutter pub get
+  #     cache: true
+  #   - name: Build Web
+  #     run: flutter build web
+  #   - name: Deploy to Github Pages
+  #     uses: peaceiris/actions-gh-pages@v3
+  #     with:
+  #       github_token: ${{ secrets.ACCESS_TOKEN }}
+  #       publish_dir: ./build/web
+
+  # name: Build and Deploy Linux
+  # runs-on: ubuntu-latest
+  # needs: [Run Test]
+  # steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Install Flutter
+  #     uses: subosito/flutter-action@v2
+  #     with:
+  #       flutter-version: '3.7.7'
+  #       channel: 'stable'
+  #       cache: true
+  #   - name: Get Packages
+  #     run: flutter pub get
+  #     cache: true
+  #   - name: Build Linux
+  #     run: flutter build linux
+  #   - name: Upload Linux
+  #     uses: actions/upload-artifact@v2
+  #     with:
+  #       name: linux-app
+  #       path: build/linux/x64/release/bundle
+  # I will not be deploying to windows for now
+  # name: Build and Deploy Windows
+  # runs-on: windows-latest
+  # needs: [Run Test]
+  # steps:
+  #   - name: Checkout
+  #     uses: actions/checkout@v3
+  #   - name: Install Flutter
+  #     uses: subosito/flutter-action@v2
+  #     with:
+  #       flutter-version: '3.7.7'
+  #       channel: 'stable'
+  #       cache: true
+  #   - name: Get Packages
+  #     run: flutter pub get
+  #     cache: true
+  #   - name: Build Windows
+  #     run: flutter build windows
+  #   - name: Upload Windows
+  #     uses: actions/upload-artifact@v2
+  #     with:
+  #       name: windows-app
+  #       path: build/windows/runner/Release
