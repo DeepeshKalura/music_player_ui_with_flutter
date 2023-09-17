@@ -49,7 +49,7 @@ Note: Make sure you ask for lots of pull requestion with the functionality you w
 - provider: ^6.0.5
 
 ### Screenshots
-![HomeScreenShot1][assets/presentation/home.jpg]
+![HomeScreenShot1][https://raw.githubusercontent.com/DeepeshKalura/music_player_ui_with_flutter/main/assets/presentation/home.jpg?token=GHSAT0AAAAAACEOW7GCI2WAAZV3DSNTCLASZIHMDQA]
 ![HomeScreenShot2][assets/presentation/home2.jpg]
 
 The Screenshots of the application are in the presentation folder.
