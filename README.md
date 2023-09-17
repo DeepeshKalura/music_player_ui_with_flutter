@@ -58,8 +58,10 @@ The Screenshots of the application are in the presentation folder.
 ### Working Video
 <!-- ![Working Video](https://deepeshkalura/music_player_ui_with_flutter/main/assets/presentation/app_recording.mp4) Not working-->
 
-[![Working Video](https://raw.githubusercontent.com/DeepeshKalura/music_player_ui_with_flutter/main/assets/presentation/video_thumbnail.jpg)](video_page.html)
+<!-- [![Working Video](https://raw.githubusercontent.com/DeepeshKalura/music_player_ui_with_flutter/main/assets/presentation/video_thumbnail.jpg)](video_page.html)
+-->
 
+The video first need to updote and then we ging to view
 
 The working video of the application is in the presentation folder.
 
