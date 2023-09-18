@@ -22,7 +22,6 @@ jobs:
         with:
           flutter-version: '3.7.7' 
           channel: 'stable'
-          cache: true
 
       - name: Get Packages
         run: flutter pub get
@@ -45,7 +44,6 @@ jobs:
         with:
           flutter-version: '3.7.7' 
           channel: 'stable'
-          cache: true
 
       - name: Get Packages
         run: flutter pub get
@@ -73,7 +71,6 @@ jobs:
         with:
           flutter-version: '3.7.7' 
           channel: 'stable'
-          cache: true
 
       - name: Get Packages
         run: flutter pub get
