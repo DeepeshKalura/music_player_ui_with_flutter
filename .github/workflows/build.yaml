@@ -54,7 +54,7 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: mr_music_player-dev.apk
-          path: build\app\outputs\flutter-apk\app-debug.apk
+          path: build/app/outputs/flutter-apk/app-debug.apk
 
   ios:
     name: Build and Deploy iOS
@@ -97,13 +97,11 @@ jobs:
           files: |
             ./android-app/mr_music_player-dev.apk
             ./ios-app/Runner.app
+
       - name: Publish Release
-
-
-      env:
-        GITHUB_TOKEN: ${{ secrets.TOKEN }}
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           echo "Publishing release ${{ steps.create_release.outputs.id }}"
           gh release upload ${{ steps.create_release.outputs.id }} ./android-app/mr_music_player-dev.apk
           gh release upload ${{ steps.create_release.outputs.id }} ./ios-app/Runner.app
-
