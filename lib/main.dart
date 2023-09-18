@@ -8,7 +8,6 @@ import 'controller/routes/routes_name.dart';
 import 'util/app_colors.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
