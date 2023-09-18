@@ -105,8 +105,8 @@ jobs:
       - name: Publish Release
         uses: svenstaro/upload-release-action@v2
         with:
-          tag_name: dev
-          release_name: mr_music_player-dev1
+          tag_name: ${{ env.GITHUB_TAG }}
+          release_name: ${{ env.GITHUB_TAG }}
           files: |
             ./android-app/mr_music_player-dev.apk
             ./ios-app/Runner.app
